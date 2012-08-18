@@ -17,15 +17,15 @@ class PyBossa::Task
     end
 
     describe '#create' do
-      pending
+      pending "Must use API key to test this method"
     end
 
     describe '#update' do
-      pending
+      pending "Must use API key to test this method"
     end
 
     describe '#delete' do
-      pending
+      pending "Must use API key to test this method"
     end
   end
 end

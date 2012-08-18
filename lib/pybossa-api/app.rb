@@ -14,7 +14,7 @@ module PyBossa
       # @option opts [String] :api_key an API key
       # @return [Hash] an app
       def get(id, opts = {})
-        PyBossa::API.one 'app', id, opts
+        PyBossa::API.retrieve 'app', id, opts
       end
 
       # Creates an app.
@@ -60,7 +60,7 @@ module PyBossa
       # @param [Hash] opts optional arguments
       # @option opts [String] :api_key an API key
       def delete(id, opts = {})
-        PyBossa::API.delete 'app', id, opts
+        PyBossa::API.destroy 'app', id, opts
       end
     end
   end

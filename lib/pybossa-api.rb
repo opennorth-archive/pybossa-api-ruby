@@ -2,6 +2,7 @@ $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__))) unless $LOAD_PATH.i
 
 require 'httparty'
 require 'sanitize'
+require 'yajl'
 
 module PyBossa
   autoload :App, 'pybossa-api/app'
@@ -39,7 +40,7 @@ module PyBossa
       # @param [Hash] opts optional arguments
       # @option opts [String] :api_key an API key
       # @return [Hash] an object
-      def one(klass, id, opts = {})
+      def retrieve(klass, id, opts = {})
         request :get, "/#{klass}/#{id}", opts
       end
 
@@ -78,7 +79,7 @@ module PyBossa
       # @raise [PyBossa::API::Error] if operation failed
       #
       # @see https://github.com/PyBossa/pybossa/blob/master/pybossa/api.py#L108
-      def delete(klass, id, opts = {})
+      def destroy(klass, id, opts = {})
         request :delete, "/#{klass}/#{id}", opts
       end
 
@@ -89,11 +90,12 @@ module PyBossa
     private
 
       def request(http_method, path, opts)
-        defaults = {}
-        if api_key
-          defaults[:api_key] = api_key
+        opts[:api_key] ||= api_key if api_key
+        response = if [:get, :delete].include? http_method
+          send http_method, path, :query => opts
+        else
+          send http_method, path, :query => {:api_key => opts.delete(:api_key)}, :body => Yajl::Encoder.encode(opts), :headers => {'Content-type' => 'application/json'}
         end
-        response = send http_method, path, query: defaults.merge(opts)
         unless [200, 204].include? response.response.code.to_i
           raise PyBossa::API::Error.new Sanitize.clean(response.response.body)
         end

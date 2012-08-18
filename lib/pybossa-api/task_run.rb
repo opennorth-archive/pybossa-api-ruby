@@ -14,7 +14,7 @@ module PyBossa
       # @option opts [String] :api_key an API key
       # @return [Hash] a task run
       def get(id, opts = {})
-        PyBossa::API.one 'taskrun', id, opts
+        PyBossa::API.retrieve 'taskrun', id, opts
       end
 
       # Creates a task run.
@@ -55,7 +55,7 @@ module PyBossa
       # @param [Hash] opts optional arguments
       # @option opts [String] :api_key an API key
       def delete(id, opts = {})
-        PyBossa::API.delete 'taskrun', id, opts
+        PyBossa::API.destroy 'taskrun', id, opts
       end
     end
   end

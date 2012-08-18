@@ -13,8 +13,27 @@ A Ruby wrapper for the PyBossa API.
 
     >> require 'pybossa-api'
 
-    >> PyBossa::App.list
-    => [{"fieldA"=>"valueA", "fieldB"=>"valueB", "fieldC"=>"valueC"}, ...]
+    >> PyBossa::App.list limit: 100 # default limit is 20
+    => [{"info"=>{"task_presenter"=>"...", "thumbnail"=>"..."}, ...}, ...]
+
+    >> PyBossa::App.list short_name: 'flickrperson'
+    => [{"info"=>{"task_presenter"=>"...", "thumbnail"=>"..."}, ...}, ...]
+
+    >> PyBossa::App.get 128
+    => {"info"=>{"task_presenter"=>"...", "thumbnail"=>"..."}, ...}
+
+    >> PyBossa::App.api_key = '21ec2020-3aea-1069-a2dd-08002b30309d'
+
+    >> app = PyBossa::App.create "info"=>{"task_presenter"=>"...", "thumbnail"=>"..."}, ...
+    => {"info"=>{"task_presenter"=>"...", "thumbnail"=>"..."}, ...}
+
+    >> PyBossa::App.update app['id'], description: "An example API call"
+    => nil # raises an error on failure
+
+    >> PyBossa::App.delete app['id']
+    => nil # raises an error on failure
+
+You can perform similar operations on `PyBossa::Task` and `PyBossa::TaskRun`.
 
 More documentation at [RubyDoc.info](http://rdoc.info/gems/pybossa-api/PyBossa/API).
 

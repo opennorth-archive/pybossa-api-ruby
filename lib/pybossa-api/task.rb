@@ -14,7 +14,7 @@ module PyBossa
       # @option opts [String] :api_key an API key
       # @return [Hash] a task
       def get(id, opts = {})
-        PyBossa::API.one 'task', id, opts
+        PyBossa::API.retrieve 'task', id, opts
       end
 
       # Creates a task.
@@ -61,7 +61,7 @@ module PyBossa
       # @param [Hash] opts optional arguments
       # @option opts [String] :api_key an API key
       def delete(id, opts = {})
-        PyBossa::API.delete 'task', id, opts
+        PyBossa::API.destroy 'task', id, opts
       end
     end
   end

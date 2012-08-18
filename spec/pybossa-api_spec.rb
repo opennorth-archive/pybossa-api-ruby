@@ -27,7 +27,7 @@ class PyBossa::API
 
     describe '#one' do
       it 'should return a hash' do
-        PyBossa::API.one('app', PyBossa::API.many('app').first['id']).should be_a(Hash)
+        PyBossa::API.retrieve('app', PyBossa::API.many('app').first['id']).should be_a(Hash)
       end
     end
 

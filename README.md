@@ -35,7 +35,7 @@ A Ruby wrapper for the PyBossa API.
 
 You can perform similar operations on `PyBossa::Task` and `PyBossa::TaskRun`.
 
-More documentation at [RubyDoc.info](http://rdoc.info/gems/pybossa-api/PyBossa/API).
+More documentation at [RubyDoc.info](http://rdoc.info/gems/pybossa-api/PyBossa).
 
 ## Bugs? Questions?
 

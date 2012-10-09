@@ -1,5 +1,5 @@
 module PyBossa
-  class Task
+  module Task
     class << self
       # @param [Hash] opts optional arguments
       # @option opts [Integer] :limit number of results to return [default 20]

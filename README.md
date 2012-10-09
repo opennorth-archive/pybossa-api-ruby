@@ -23,7 +23,7 @@ A Ruby wrapper for the [PyBossa](http://pybossa.com/) [API](http://docs.pybossa.
     >> PyBossa::App.get 128
     => {"info"=>{"task_presenter"=>"...", "thumbnail"=>"..."}, ...}
 
-    >> PyBossa::App.api_key = '21ec2020-3aea-1069-a2dd-08002b30309d'
+    >> PyBossa::API.api_key = '21ec2020-3aea-1069-a2dd-08002b30309d'
 
     >> app = PyBossa::App.create "info"=>{"task_presenter"=>"...", "thumbnail"=>"..."}, ...
     => {"info"=>{"task_presenter"=>"...", "thumbnail"=>"..."}, ...}

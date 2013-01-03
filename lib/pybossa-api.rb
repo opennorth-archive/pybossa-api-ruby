@@ -3,10 +3,6 @@ require 'sanitize'
 require 'yajl'
 
 module PyBossa
-  autoload :App, 'pybossa-api/app'
-  autoload :Task, 'pybossa-api/task'
-  autoload :TaskRun, 'pybossa-api/task_run'
-
   # A Ruby wrapper for the PyBossa API.
   # @see http://docs.pybossa.com/en/latest/model.html#restful-api
   class API
@@ -102,3 +98,7 @@ module PyBossa
     end
   end
 end
+
+require 'pybossa-api/app'
+require 'pybossa-api/task'
+require 'pybossa-api/task_run'

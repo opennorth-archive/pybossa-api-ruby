@@ -15,11 +15,11 @@ class PyBossa::API
       end
 
       it 'should respect the :limit argument' do
-        PyBossa::API.many('app', limit: 1).should have(1).item
+        PyBossa::API.many('app', :limit => 1).should have(1).item
       end
 
       it 'should respect a field argument' do
-        PyBossa::API.many('app', short_name: EXAMPLE_SHORT_NAME).find{|result|
+        PyBossa::API.many('app', :short_name => EXAMPLE_SHORT_NAME).find{|result|
           result['short_name'] == EXAMPLE_SHORT_NAME
         }.should_not be_nil
       end

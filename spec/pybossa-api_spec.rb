@@ -32,15 +32,15 @@ class PyBossa::API
     end
 
     describe '#create' do
-      pending "Must use API key to test this method"
+      pending "Must use API key. See http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables"
     end
 
     describe '#update' do
-      pending "Must use API key to test this method"
+      pending "Must use API key. See http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables"
     end
 
     describe '#delete' do
-      pending "Must use API key to test this method"
+      pending "Must use API key. See http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables"
     end
   end
 end

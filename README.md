@@ -2,6 +2,7 @@
 
 A Ruby wrapper for the [PyBossa](http://pybossa.com/) [API](http://docs.pybossa.com/en/latest/model.html).
 
+[![Gem Version](https://badge.fury.io/rb/pybossa-api.svg)](http://badge.fury.io/rb/pybossa-api)
 [![Build Status](https://secure.travis-ci.org/opennorth/pybossa-api-ruby.png)](http://travis-ci.org/opennorth/pybossa-api-ruby)
 [![Dependency Status](https://gemnasium.com/opennorth/pybossa-api-ruby.png)](https://gemnasium.com/opennorth/pybossa-api-ruby)
 [![Coverage Status](https://coveralls.io/repos/opennorth/pybossa-api-ruby/badge.png?branch=master)](https://coveralls.io/r/opennorth/pybossa-api-ruby)

@@ -8,7 +8,7 @@ module PyBossa
   # @see http://docs.pybossa.com/en/latest/model.html#restful-api
   class API
     include HTTParty
-    base_uri 'pybossa.com/api'
+    base_uri 'crowdcrafting.org/api'
 
     class Error < StandardError; end
 

@@ -9,25 +9,25 @@ class PyBossa::API
     describe '#many' do
       it 'should return a non-empty array of hashes' do
         response = PyBossa::API.many 'app'
-        response.should be_an(Array)
-        response.should have_at_least(1).item
-        response.each{|x| x.should be_a(Hash)}
+        expect(response).to be_an(Array)
+        expect(response.size).to be >= 1
+        response.each{|x| expect(x).to be_a(Hash)}
       end
 
       it 'should respect the :limit argument' do
-        PyBossa::API.many('app', :limit => 1).should have(1).item
+        expect(PyBossa::API.many('app', :limit => 1).size).to eq(1)
       end
 
       it 'should respect a field argument' do
-        PyBossa::API.many('app', :short_name => EXAMPLE_SHORT_NAME).find{|result|
+        expect(PyBossa::API.many('app', :short_name => EXAMPLE_SHORT_NAME).find{|result|
           result['short_name'] == EXAMPLE_SHORT_NAME
-        }.should_not be_nil
+        }).to_not be_nil
       end
     end
 
     describe '#one' do
       it 'should return a hash' do
-        PyBossa::API.retrieve('app', PyBossa::API.many('app').first['id']).should be_a(Hash)
+        expect(PyBossa::API.retrieve('app', PyBossa::API.many('app').last['id'])).to be_a(Hash)
       end
     end
 

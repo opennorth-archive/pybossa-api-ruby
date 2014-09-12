@@ -4,14 +4,14 @@ describe PyBossa::TaskRun do
   describe '#list' do
     it 'should return a list of task runs' do
       response = PyBossa::TaskRun.list
-      response.each{|x| x.should have_key('task_id')}
+      response.each{|x| expect(x).to have_key('task_id')}
     end
   end
 
   describe '#get' do
     it 'should get an task run' do
       response = PyBossa::TaskRun.get PyBossa::TaskRun.list.first['id']
-      response.should have_key('task_id')
+      expect(response).to have_key('task_id')
     end
   end
 

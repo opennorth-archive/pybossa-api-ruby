@@ -4,14 +4,14 @@ describe PyBossa::App do
   describe '#list' do
     it 'should return a list of apps' do
       response = PyBossa::App.list
-      response.each{|x| x.should have_key('name')}
+      response.each{|x| expect(x).to have_key('name')}
     end
   end
 
   describe '#get' do
     it 'should get an app' do
-      response = PyBossa::App.get PyBossa::App.list.first['id']
-      response.should have_key('name')
+      response = PyBossa::App.get PyBossa::App.list.last['id']
+      expect(response).to have_key('name')
     end
   end
 

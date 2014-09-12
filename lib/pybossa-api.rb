@@ -1,6 +1,7 @@
+require 'json'
+
 require 'httparty'
 require 'sanitize'
-require 'yajl'
 
 module PyBossa
   # A Ruby wrapper for the PyBossa API.
@@ -88,7 +89,7 @@ module PyBossa
         response = if [:get, :delete].include? http_method
           send http_method, path, :query => opts
         else
-          send http_method, path, :query => {:api_key => opts.delete(:api_key)}, :body => Yajl::Encoder.encode(opts), :headers => {'Content-type' => 'application/json'}
+          send http_method, path, :query => {:api_key => opts.delete(:api_key)}, :body => JSON.dump(opts), :headers => {'Content-type' => 'application/json'}
         end
         unless [200, 204].include? response.response.code.to_i
           raise PyBossa::API::Error.new Sanitize.clean(response.response.body)
